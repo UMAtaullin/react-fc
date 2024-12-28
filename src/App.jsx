@@ -30,7 +30,7 @@ function App() {
       <form>
         <input type="text" placeholder='Название поста'/>
         <input type="text" placeholder='Описание поста'/>
-        <MyButton>Создать пост</MyButton>
+        <MyButton disabled>Создать пост</MyButton>
       </form>
 
       <PostList posts={posts} listTitle='JS' />

@@ -1,11 +1,13 @@
 import React from 'react'
 import css from './MyButton.module.css'
 
-const MyButton = (props) => {
+const MyButton = ({children, ...props}) => {
   debugger
   return(
-    <button className={css.myBtn}>
-      {props.children}
+    <button {...props}
+      className={css.myBtn} 
+      >
+      {children}
     </button>
   )
 }
