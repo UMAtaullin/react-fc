@@ -2,34 +2,38 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './styles/App.css'
 import { useState } from 'react'
-import PostItem from './components/PostItem'
 import PostList from './components/PostList'
 import MyButton from './components/UI/button/MyButton'
 import MyInput from './components/UI/input/MyInput'
 
 function App() {
-  const [posts, setPost] = useState([
-    {
-      id: 0,
-      title: 'Hello World!',
-      text: 'Welcome to my React and Vite app!',
-    },
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: 'React',
-      text: 'React is a JavaScript library for building user interfaces.',
+      body: 'React is a JavaScript library for building user interfaces.',
     },
     {
       id: 2,
       title: 'Vite',
-      text: 'Vite is a build tool that improves on create-react-app.',
+      body: 'Vite is a build tool that improves on create-react-app.',
     },
   ])
   const [title, setTitle] = useState('')
-  const addText = (e) => {
+  const [body, setBody] = useState('')
+
+  const addNewPost = (e) => {
     e.preventDefault()
-    console.log(title)
+    const newPost = {
+      id: Date.now(),
+      title,
+      body,
+    }
+    setPosts([...posts, newPost])
+    setTitle('')
+    setBody('')
   }
+
   return (
     <div className='App'>
       <form>
@@ -40,9 +44,15 @@ function App() {
           type='text'
           placeholder='Название поста'
         />
-        <MyInput type='text' placeholder='Описание поста' />
+        <MyInput
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          type='text'
+          placeholder='Описание поста'
+        />
 
-        <MyButton onClick={addText}>Создать пост</MyButton>
+
+        <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
 
       <PostList posts={posts} listTitle='JS' />

@@ -4,8 +4,12 @@ const PostList = ({posts, listTitle}) => {
   return (
     <div className='postList'>
       <h1>{listTitle}</h1>
-      {posts.map((post) => (
-        <PostItem key={post.id} post={post} />
+      {posts.map((post, index) => (
+        <PostItem 
+          number={index + 1}
+          post={post} 
+          key={post.id} 
+          />
       ))}
     </div>
   )
