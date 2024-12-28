@@ -25,14 +25,24 @@ function App() {
       text: 'Vite is a build tool that improves on create-react-app.',
     },
   ])
-
+  const [title, setTitle] = useState('')
+  const addText = (e) => {
+    e.preventDefault()
+    console.log(title)
+  }
   return (
     <div className='App'>
       <form>
-        <MyInput type='text' placeholder='Название поста' />
+        {/* Управляемый компонент */}
+        <MyInput
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          type='text'
+          placeholder='Название поста'
+        />
         <MyInput type='text' placeholder='Описание поста' />
 
-        <MyButton disabled>Создать пост</MyButton>
+        <MyButton onClick={addText}>Создать пост</MyButton>
       </form>
 
       <PostList posts={posts} listTitle='JS' />

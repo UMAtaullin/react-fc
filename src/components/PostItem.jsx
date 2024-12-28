@@ -1,5 +1,5 @@
 const PostItem = (props) => {
-  debugger
+
   return (
     <div className='post'>
       <div className='post__content'>
