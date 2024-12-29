@@ -1,5 +1,3 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './styles/App.css'
 import { useState } from 'react'
 import PostList from './components/PostList'
@@ -8,49 +6,44 @@ import MyInput from './components/UI/input/MyInput'
 
 function App() {
   const [posts, setPosts] = useState([
-    {
-      id: 1,
-      title: 'React',
-      body: 'React is a JavaScript library for building user interfaces.',
-    },
-    {
-      id: 2,
-      title: 'Vite',
-      body: 'Vite is a build tool that improves on create-react-app.',
-    },
+    { id: 1, title: 'React', body: 'Первый пост о React' },
+    { id: 2, title: 'Vite', body: 'Первый пост о Vite' },
+    { id: 3, title: 'React Hooks', body: 'Первый пост о React Hooks' },
+    { id: 4, title: 'Next.js', body: 'Первый пост о Next.js' },
   ])
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
+
+  const [post, setPost] = useState({ title: '', body: '' })
 
   const addNewPost = (e) => {
     e.preventDefault()
     const newPost = {
       id: Date.now(),
-      title,
-      body,
+      title: post.title,
+      body: post.body,
     }
+
+    // Обновляем состояние posts
     setPosts([...posts, newPost])
-    setTitle('')
-    setBody('')
+
+    // Сбрасываем состояние полей ввода
+    setPost({ title: '', body: '' })
   }
 
   return (
     <div className='App'>
       <form>
-        {/* Управляемый компонент */}
         <MyInput
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={post.title}
+          onChange={(e) => setPost({ ...post, title: e.target.value })}
           type='text'
           placeholder='Название поста'
         />
         <MyInput
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
+          value={post.body}
+          onChange={(e) => setPost({ ...post, body: e.target.value })}
           type='text'
           placeholder='Описание поста'
         />
-
 
         <MyButton onClick={addNewPost}>Создать пост</MyButton>
       </form>
