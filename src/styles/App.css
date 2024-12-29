@@ -20,3 +20,10 @@
   border: 3px solid teal;
   margin-top: 15px;
 }
+
+.notFound {
+  padding: 20px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}

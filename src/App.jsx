@@ -18,13 +18,13 @@ function App() {
 
   return (
     <div className='App'>
-
       <PostForm createPost={createPost} />
-
-      <PostList 
-        removePost={removePost}
-        posts={posts} 
-        listTitle='JS' />
+      {/* Условная отрисовка */}
+      {!posts.length ? (
+        <div className='notFound'>Посты не найдены!</div>
+      ) : (
+        <PostList removePost={removePost} posts={posts} listTitle='JS' />
+      )}
     </div>
   )
 }
