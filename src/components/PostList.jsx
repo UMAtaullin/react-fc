@@ -1,6 +1,16 @@
 import PostItem from './PostItem'
 
 const PostList = ({removePost, posts, listTitle}) => {
+
+  if (!posts.length) {
+    return (
+      <div className='notFound'>
+        Постов пока нет. <br />
+        Создайте первый пост!
+      </div>
+    )
+  }
+
   return (
     <div className='postList'>
       <h1>{listTitle}</h1>

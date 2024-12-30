@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import MyInput from './UI/input/MyInput'
 import MyButton from './UI/button/MyButton'
+import '../styles/App.css'
+
 
 const PostForm = ({createPost}) => {
   
@@ -21,7 +23,7 @@ const PostForm = ({createPost}) => {
   }
   
   return (
-    <form>
+    <form className='postForm'>
       <MyInput
         value={post.title}
         onChange={(e) => setPost({ ...post, title: e.target.value })}
@@ -35,7 +37,9 @@ const PostForm = ({createPost}) => {
         placeholder='Описание поста'
       />
 
-      <MyButton onClick={addNewPost}>Создать пост</MyButton>
+      <MyButton 
+        className='btn'
+        onClick={addNewPost}>Создать пост</MyButton>
     </form>
   )
 }
